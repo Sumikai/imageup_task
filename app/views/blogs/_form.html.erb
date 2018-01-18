@@ -1,5 +1,5 @@
 <div class="row">
-  <article class="col-xs-12 col-md-12">
+  <article class="col-xs-12 col-md-6 col-md-offset-1">
     <%= form_with(model: @blog, local: true ,url: choose_new_or_edit) do |form| %>
       <% if @blog.errors.any? %>
         <div id="error_explanation">
