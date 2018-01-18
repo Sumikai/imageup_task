@@ -92,9 +92,11 @@ tr {
 }
 
 table {
-    margin: auto;
     padding: 10px;
     text-align: left;
+    width: 60%;
+    margin: 0 auto;
+    max-width: 500px;
 }
 
 article{
