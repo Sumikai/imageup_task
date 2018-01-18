@@ -1,16 +1,32 @@
-<h3>以下の内容で、送信する。</h3>
+<div class="container">
+  <h3>投稿しますか？</h3>
+  <div class="row">
+    <article class="col-xs-12 col-md-12">
+      <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
+        <%= form.hidden_field :title %>
+        <%= form.hidden_field :content %>
 
-<%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-
-  <p>タイトル:<%= @blog.title %></p>
-  <p>本文:<%= @blog.content %></p>
-  <%= form.submit  "登録する" %>
-<% end %>
-
-<%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <%= form.submit "もどる", name: 'back' %>
-<% end %>
+      <table>
+        <tr>
+          <th>タイトル</th>
+          <td><p><%= @blog.title %></p></td>
+        </tr>
+        <tr>
+          <th>内容</th>
+          <td><%= @blog.content %></td>
+        </tr>
+        </td></tr>
+      </table>
+      
+      <p><%= form.submit "投稿", :class => 'btn btn-success' %></p>
+    <% end %>
+    
+      <br>
+      <%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
+        <%= form.hidden_field :title %>
+          <%= form.hidden_field :content %>
+          <p><%= form.submit "戻る", name: 'back', :class => 'btn btn-default' %></p>
+      <% end %>
+    </article>
+  </div>
+</div>

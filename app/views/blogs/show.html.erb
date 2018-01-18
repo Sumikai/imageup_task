@@ -1,3 +1,18 @@
-<h1>ブログ詳細画面</h1>
-<p>タイトル: <%= @blog.title %></p>
-<p>内容: <%= @blog.content %></p>
+<div class="container">
+  <h1>ブログ詳細画面</h1>
+  <div class="row">
+    <article class="col-xs-12 col-md-12">
+      <table>
+        <tr>
+          <th>タイトル</th>
+          <td><p><%= @blog.title %></p></td>
+        </tr>
+        <tr>
+          <th>内容</th>
+          <td><%= @blog.content %></td>
+        </tr>
+        </td></tr>
+      </table>
+    </article>
+  </div>
+</div>

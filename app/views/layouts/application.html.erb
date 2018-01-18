@@ -3,12 +3,28 @@
   <head>
     <title>RailsTask02</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
 
   <body>
+    <header class="header">
+      <div class="top_logo">
+        <p><%= link_to 'HOME', top_blogs_path %></p>
+        <p><%= link_to '記事一覧', blogs_path %></p>
+        <p><%= link_to '新規投稿', new_blog_path %></p>
+      </div>
+    </header>
+    
     <%= yield %>
+    
+    <footer>
+      <div class="footer_content">
+        <p>Testページ</p>
+        <p>© 2018 Copyright HASHIMOTO Jun.</p>
+      </div>
+    </footer>
   </body>
 </html>
