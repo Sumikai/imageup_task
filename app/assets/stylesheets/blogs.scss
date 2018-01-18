@@ -94,13 +94,15 @@ tr {
 table {
     padding: 10px;
     text-align: left;
-    display: inline-block;
+    width: 70%;
+    margin: 0 auto;
 }
 
 article{
-  margin: 0 auto;
-  padding: 5px;
+  margin-top: 5px;
+  padding: 5% 5%;
   box-sizing: border-box;
   border: solid 1px #fff;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
