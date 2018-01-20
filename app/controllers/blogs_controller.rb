@@ -20,8 +20,7 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     if @blog.save
-      # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
-      redirect_to blogs_path, notice: "ブログを作成しました"
+      redirect_to blogs_path, notice: "記事を作成しました"
     else
       # 入力フォームを再描画します。
       render 'new'
@@ -31,7 +30,7 @@ class BlogsController < ApplicationController
   def update
     if @blog.update(blog_params)
       #ブログ一覧画面に戻ります
-      redirect_to blogs_path, notice: "ブログを編集しました"
+      redirect_to blogs_path, notice: "記事を編集しました"
     else
       #編集画面を再描画します
       render 'edit'

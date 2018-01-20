@@ -1,27 +1,28 @@
-<div class="row">
-  <article class="col-xs-12 col-md-12 col-md-offset-1">
-    <%= form_with(model: @blog, local: true ,url: choose_new_or_edit) do |form| %>
-      <% if @blog.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
-          <ul>
-            <% @blog.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      
-    <table>
-      <tr><td><%= form.label :title %></td></tr>
-      <tr><td><%= form.text_field :title, size:40 %></td></tr>
-      
-      <tr><td><%= form.label :content %></td></tr>
-      <tr><td><%= form.text_area :content, :size => "42x4" %></td></tr>
-    </table>
-     
-     <p><%= form.submit "投稿", :class => 'btn btn-success' %>
+<center>
+  <%= form_with(model: @blog, local: true ,url: choose_new_or_edit) do |form| %>
+    <% if @blog.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+          <% @blog.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+      </div>
     <% end %>
+      
+    <div class="row">
+      <article class="col-xs-12 col-md-12">
+        <%= form.label :title %>
+        <%= form.text_field :title, size:40 %>
+      </article>
+      
+      <article class="col-xs-12 col-md-12">
+        <%= form.label :content %>
+        <%= form.text_area :content, :size => "42x3" %>
+      </article>
+    </div>
+     
+    <p><%= form.submit "投稿", :class => 'btn btn-success' %>
+      <% end %>
     
       <%= link_to "戻る", blogs_path, :class => 'btn btn-default' %></p>
     </article>

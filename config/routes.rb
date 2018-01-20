@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   root 'blogs#index'
-  #get 'twiclones/top'
   
   resources :blogs do
     collection do
@@ -8,4 +9,6 @@ Rails.application.routes.draw do
       get :top
     end
   end
+  
+  resources :users, only: [:new, :create, :show, :destroy]
 end

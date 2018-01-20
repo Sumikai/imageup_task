@@ -1,21 +1,17 @@
 <div class="container">
   <h3>投稿しますか？</h3>
-  <div class="row">
-    <article class="col-xs-12 col-md-12 col-md-offset-1">
-      <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
-        <%= form.hidden_field :title %>
-        <%= form.hidden_field :content %>
+    <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
+      <%= form.hidden_field :title %>
+      <%= form.hidden_field :content %>
 
-      <table>
+      <table class="row">
+        <th>タイトル</th>
+        <th>内容</th>
+        
         <tr>
-          <th>タイトル</th>
-          <td><p><%= @blog.title %></p></td>
+          <td class="col-xs-12 col-md-6"><%= @blog.title %></td>
+          <td class="col-xs-12 col-md-6"><%= @blog.content %></td>
         </tr>
-        <tr>
-          <th>内容</th>
-          <td><%= @blog.content %></td>
-        </tr>
-        </td></tr>
       </table>
       
       <p><%= form.submit "投稿", :class => 'btn btn-success' %></p>

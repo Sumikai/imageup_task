@@ -1,27 +1,24 @@
 <div class="container">
   <h1>記事一覧</h1>
-  <div class="row">
-    <article class="col-xs-12 col-md-12  col-md-offset-1">
+  
+    <p><%= notice %></p>
 
-      <p><%= notice %></p>
-
-    <table>
-    <tr>
-      <th>タイトル</th>
-      <th>内容</th>
-      <th></th>
-    </tr>
+    <div class="row">
+      <article class="col-xs-12 col-md-4">タイトル</article>
+      <article class="col-xs-12 col-md-4">内容</article>
+      <article class="col-xs-12 col-md-4"></article>
+    </div>
 
       <% @blogs.each do |blog| %>
-        <tr>
-          <td><%= blog.title %></td>
-          <td><%= blog.content %></td>
-          <td><%= link_to '詳細', blog_path(blog.id), :class => 'btn btn-info' %>
+        <div class="row">
+          <article class="col-xs-12 col-md-4"><%= blog.title %></article>
+          <article class="col-xs-12 col-md-4"><%= blog.content %></article>
+          <article class="col-xs-12 col-md-4"><%= link_to '詳細', blog_path(blog.id), :class => 'btn btn-info' %>
             <%= link_to "編集", edit_blog_path(blog.id), :class => 'btn btn-default' %>
             <%= link_to '削除', blog_path(blog.id), method: :delete, data: { confirm: '消していいですか？' }, :class => 'btn btn-danger' %></td>
-        </tr>
+          </article>
+        </div>
       <% end %>
-    </table>
     <br>
     <p><%= link_to '新規投稿', new_blog_path, :class => 'btn btn-success' %></p>
     </article>

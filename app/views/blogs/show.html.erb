@@ -1,17 +1,14 @@
 <div class="container">
   <h1>ブログ詳細画面</h1>
-  <div class="row">
-    <article class="col-xs-12 col-md-12 col-md-offset-1">
-      <table>
+    <article>
+      <table class="row">
+        <th>タイトル</th>
+        <th>内容</th>
+        
         <tr>
-          <th>タイトル</th>
-          <td><p><%= @blog.title %></p></td>
+          <td class="col-xs-12 col-md-6"><%= @blog.title %></td>
+          <td class="col-xs-12 col-md-6"><%= @blog.content %></td>
         </tr>
-        <tr>
-          <th>内容</th>
-          <td><%= @blog.content %></td>
-        </tr>
-        </td></tr>
       </table>
     </article>
   </div>
