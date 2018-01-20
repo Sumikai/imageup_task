@@ -3,15 +3,9 @@
   
   <p><%= notice %></p>
 
-  <div class="row row-eq-height">
-    <article class="col-xs-12 col-md-4">タイトル</article>
-    <article class="col-xs-12 col-md-4">内容</article>
-    <article class="col-xs-12 col-md-4"></article>
-  </div>
-
   <% @blogs.each do |blog| %>
     <div class="row">
-      <article class="col-xs-12 col-md-4"><%= blog.title %></article>
+      <article class="col-xs-12 col-md-4"><b><%= blog.title %></b></article>
       <article class="col-xs-12 col-md-4"><%= blog.content %></article>
       <article class="col-xs-12 col-md-4"><%= link_to '詳細', blog_path(blog.id), :class => 'btn btn-info' %>
         <%= link_to "編集", edit_blog_path(blog.id), :class => 'btn btn-default' %>
