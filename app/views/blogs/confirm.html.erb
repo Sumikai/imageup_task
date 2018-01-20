@@ -4,15 +4,13 @@
       <%= form.hidden_field :title %>
       <%= form.hidden_field :content %>
 
-      <table class="row">
-        <th>タイトル</th>
-        <th>内容</th>
-        
-        <tr>
-          <td class="col-xs-12 col-md-6"><%= @blog.title %></td>
-          <td class="col-xs-12 col-md-6"><%= @blog.content %></td>
-        </tr>
-      </table>
+      <div class="row">
+        <article class="col-xs-12 col-md-4">タイトル</article>
+        <article class="col-xs-12 col-md-8"><%= @blog.title %></article>
+      
+        <article class="col-xs-12 col-md-4">内容</article>
+        <article class="col-xs-12 col-md-8"><%= @blog.content %></article>
+      </row>
       
       <p><%= form.submit "投稿", :class => 'btn btn-success' %></p>
     <% end %>
