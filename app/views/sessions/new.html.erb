@@ -1,21 +1,23 @@
-<div class="row">
-  <div class="col-xs-12 col-md-6 col-md-offset-3">
-    <center><h1>Log in</h1></center>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <center><h1>Log in</h1></center>
     
-    <br>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
-    <br>
-    <%= form_with(scope: :session, url: sessions_path) do |f| %>
+      <br>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      <br>
+      <%= form_with(scope: :session, url: sessions_path) do |f| %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email %>
+        <%= f.label :email %>
+        <%= f.email_field :email %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
 
-      <%= f.submit "Log in", :class => 'btn btn-default' %>
-    <% end %>
+        <%= f.submit "Log in", :class => 'btn btn-default' %>
+      <% end %>
+    </div>
   </div>
 </div>
