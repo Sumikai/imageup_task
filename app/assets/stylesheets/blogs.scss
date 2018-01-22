@@ -41,8 +41,6 @@ p {
     -webkit-padding-start: 40px;
 }
 
-
-
 footer {
     bottom: 0;
     position: fixed;
@@ -86,4 +84,14 @@ td{
     width: 80%;
     text-align: left;
     padding-left: 10px;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
 }
