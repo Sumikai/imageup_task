@@ -19,7 +19,7 @@
       <%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
         <%= form.hidden_field :title %>
           <%= form.hidden_field :content %>
-          <p><%= form.submit "戻る", name: 'back', :class => 'btn btn-default' %></p>
+          <p><%= form.submit "戻る", name: 'back', :class => 'btn btn-default btn-block' %></p>
       <% end %>
     </article>
   </div>
