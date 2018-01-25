@@ -1,5 +1,4 @@
-<div class="container">
-  <div class="row row-height">
+  <div class="row">
     <article class="col-xs-12 col-md-6">
       <%= image_tag 'my_icon.jpg', :class => "img-responsive center-block" %>
     </article>
@@ -9,9 +8,16 @@
         <p>これは「ブログっぽい」何かです。</p>
         <p>タイトルをつけることができます。</p>
         <p>本文も書くことができます。</p>
+        
         <br>
-        <%= link_to "Sign up", new_user_path,  :class => 'btn btn-danger' %>
-        <%= link_to "Login", new_session_path, :class => 'btn btn-primary' %>
+        
+        <% if logged_in? %>
+          <%= link_to "List", blogs_path, :class => 'btn btn-info' %>
+          <%= link_to "Logout", session_path(current_user.id), method: :delete, :class => 'btn btn-danger' %>
+        <% else %>
+          <%= link_to "Sign up", new_user_path, :class => 'btn btn-success' %>
+          <%= link_to "Login", new_session_path, :class => 'btn btn-primary' %>
+        <% end %>
     </article>
   </div>
 </div>

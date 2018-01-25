@@ -1,4 +1,5 @@
-<div class="container">
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
   <h1>記事一覧</h1>
   
   <p><%= notice %></p>
@@ -7,9 +8,14 @@
     <div class="row">
       <article class="col-xs-12 col-md-4"><b><%= blog.title %></b></article>
       <article class="col-xs-12 col-md-4"><%= blog.content %></article>
-      <article class="col-xs-12 col-md-4"><%= link_to '詳細', blog_path(blog.id), :class => 'btn btn-info' %>
-        <%= link_to "編集", edit_blog_path(blog.id), :class => 'btn btn-default' %>
-        <%= link_to '削除', blog_path(blog.id), method: :delete, data: { confirm: '消していいですか？' }, :class => 'btn btn-danger' %>
+      
+      <article class="col-xs-12 col-md-4">
+        <%= link_to '詳細', blog_path(blog.id), :class => 'btn btn-info' %>
+      
+        <% if blog.user == current_user %>
+          <%= link_to "編集", edit_blog_path(blog.id), :class => 'btn btn-default' %>
+          <%= link_to '削除', blog_path(blog.id), method: :delete, data: { confirm: '消していいですか？' }, :class => 'btn btn-danger' %>
+        <% end %>
       </article>
     </div>
   <% end %>

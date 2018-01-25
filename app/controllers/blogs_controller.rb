@@ -1,14 +1,15 @@
 class BlogsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :edit, :show, :destroy]
-  before_action :current_user, only: [:new, :edit, :show, :destroy]
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-
+  before_action :logged_in_user, only: [:new, :edit, :show, :destroy, :favorite, :users]
+  #before_action :current_user,   only: [:edit, :update]
+  
   def top
     
   end
   
   def index
     @blogs = Blog.all
+    #@user = current_user
   end
   
   def new
@@ -21,12 +22,17 @@ class BlogsController < ApplicationController
   
   def create
     @blog = Blog.new(blog_params)
+    #現在ログインしているuserのidをblogのuser_idカラムに挿入
+    @blog.user_id = current_user.id
     if @blog.save
       redirect_to blogs_path, notice: "記事を作成しました"
     else
-      # 入力フォームを再描画します。
       render 'new'
     end
+  end
+  
+  def show
+   @favorite = current_user.favorites.find_by(blog_id: @blog.id)
   end
   
   def update
@@ -46,7 +52,12 @@ class BlogsController < ApplicationController
   
   def confirm
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
     render :new if @blog.invalid?
+  end
+  
+  def favorite
+    @blogs = current_user.favorite_blogs
   end
   
   private
