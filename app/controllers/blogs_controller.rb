@@ -9,6 +9,7 @@ class BlogsController < ApplicationController
   
   def index
     @blogs = Blog.all
+    @user = current_user
   end
   
   def new
@@ -24,9 +25,10 @@ class BlogsController < ApplicationController
     #現在ログインしているuserのidをblogのuser_idカラムに挿入
     @blog.user_id = current_user.id
     if @blog.save
-      redirect_to blogs_path, notice: "記事を作成しました"
+      ContactMailer.blog_mail(@blog_new).deliver
+      redirect_to blogs_path, notice: "投稿しました"
     else
-      render 'new'
+      redirect_to blogs_path, notice: "投稿できませんでした"
     end
   end
   
