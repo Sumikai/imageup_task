@@ -24,12 +24,23 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     #現在ログインしているuserのidをblogのuser_idカラムに挿入
     @blog.user_id = current_user.id
-    if @blog.save
-      BlogMailer.blog_mail(@blog).deliver
-      redirect_to blogs_path, notice: "投稿しました"
-    else
-      redirect_to blogs_path, notice: "投稿できませんでした"
+    #if @blog.save
+      #redirect_to blogs_path, notice: "投稿しました"
+    #else
+      #redirect_to blogs_path, notice: "投稿できませんでした"
+    #end
+    
+    respond_to do |format|
+      if @blog.save
+        BlogMailer.blog_mail(@blog).deliver
+        format.html { redirect_to blogs_path, notice: "新しく投稿しました" }
+        format.json { render :index, status: :created, location: @blog }
+      else
+        format.html { render :new }
+        format.json { render json: @blog.errors, status: :unprocessable_entity }
+      end
     end
+    
   end
   
   def show
