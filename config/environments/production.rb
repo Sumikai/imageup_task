@@ -90,7 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   #SendGrid ホストの設定
-  config.action_mailer.default_url_options = { host: 'mailer-task.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'mailer-task' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
   {
