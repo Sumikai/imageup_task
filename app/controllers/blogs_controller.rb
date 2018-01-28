@@ -25,7 +25,7 @@ class BlogsController < ApplicationController
     #現在ログインしているuserのidをblogのuser_idカラムに挿入
     @blog.user_id = current_user.id
     if @blog.save
-      ContactMailer.blog_mail(@blog_new).deliver
+      BlogMailer.blog_mail(@blog).deliver
       redirect_to blogs_path, notice: "投稿しました"
     else
       redirect_to blogs_path, notice: "投稿できませんでした"
