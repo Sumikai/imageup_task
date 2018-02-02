@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-offset-3">
+
+    <%= form_with(model: @user, local: true) do |f| %>
+    
+      <p><%= f.label :image %></p>
+      <p><%= f.file_field :image, id: :user_image %></p>
+      <%= f.hidden_field :image_cache %>
+    
+      <p><%= f.label :name %></p>
+      <p><%= f.text_field :name %></p>
+      
+      <p><%= f.label :email %></p>
+      <p><%= f.email_field :email %></p>
+
+      <p><%= f.submit "編集", class: "btn btn-success" %></p>
+    <% end %>
+  </div>
+ </div>

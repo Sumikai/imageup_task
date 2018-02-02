@@ -1,8 +1,9 @@
 <div class="container">
   <h3>投稿しますか？</h3>
-    <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
+    <%= form_with(model: @blog, local: true) do |form| %>
       <%= form.hidden_field :title %>
       <%= form.hidden_field :content %>
+      <%= form.hidden_field :image %>
 
       <div class="row">
         <article class="col-xs-12 col-md-4">タイトル</article>
@@ -10,7 +11,12 @@
       
         <article class="col-xs-12 col-md-4">内容</article>
         <article class="col-xs-12 col-md-8"><%= @blog.content %></article>
-      </row>
+        
+        <article class="col-xs-12 col-md-4">画像</article>
+        <article class="col-xs-12 col-md-8"><%= image_tag @blog.image.url if @blog.image.present? %></article>
+          <%= hidden_field_tag :"cache[image]",@blog.image.cache_name %>
+        
+      </div>
       
       <p><%= form.submit "投稿", :class => 'btn btn-success' %></p>
     <% end %>
@@ -18,8 +24,10 @@
       <br>
       <%= form_with(model: @blog, url: new_blog_path, local: true, method: 'get') do |form| %>
         <%= form.hidden_field :title %>
-          <%= form.hidden_field :content %>
-          <p><%= form.submit "戻る", name: 'back', :class => 'btn btn-default btn-block' %></p>
+        <%= form.hidden_field :content %>
+        <%= form.hidden_field :image %>
+        
+        <p><%= form.submit "戻る", name: 'back', :class => 'btn btn-default btn-block' %></p>
       <% end %>
     </article>
   </div>

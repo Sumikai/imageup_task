@@ -26,14 +26,15 @@
             <div id="gnavi" class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
                 
-                <li><%= link_to "見", blogs_path %></li>
+                <li><%= link_to "リスト", blogs_path %></li>
                 <% if logged_in? %>
-                  <li><%= link_to '話', new_blog_path %></li>
-                  <li><%= link_to "好", favorite_blogs_path %></li>
-                  <li><%= link_to "出", session_path(current_user.id), method: :delete %></li>
+                  <li><%= link_to 'つぶやく', new_blog_path %></li>
+                  <li><%= link_to "お気に入り", favorite_blogs_path %></li>
+                  <li><%= link_to "設定", user_path(current_user.id) %></li>
+                  <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
                 <% else %>
                   <li><%= link_to "会員登録", new_user_path %></li>
-                  <li><%= link_to "入", new_session_path %></li>
+                  <li><%= link_to "ログイン", new_session_path %></li>
                 <% end %>
                 
               </ul>

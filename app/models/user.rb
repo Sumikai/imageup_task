@@ -5,10 +5,13 @@ class User < ApplicationRecord
   before_save { email.downcase! }
   
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :password, length: {minimum: 6}, on: :update, allow_blank: true
   
   #アソシエーション
   has_many :blogs
   has_many :favorites, dependent: :destroy
   has_many :favorite_blogs, through: :favorites, source: :blog
+  
+  mount_uploader :image, ImageUploader
 end
